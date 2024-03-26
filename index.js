@@ -55,7 +55,7 @@ module.exports = {
   getWards: () => wards,
   getAreasWithDetail: () => treeWithArea,
   getProvincesWithDetail: () => tree,
-  getProvindByAreaCode: (areaCode) => provinces.filter((x) => x.areaCode == areaCode),
+  getProvindByAreaCode: (areaCode) => provinces.filter((x) => x.area_code == areaCode),
   getDistrictsByProvinceCode: (provinceCode) => districts.filter((x) => x.province_code == provinceCode),
   getWardsByDistrictCode: (districtCode) => wards.filter((x) => x.district_code == districtCode),
   getWardsByProvinceCode: (provinceCode) => wards.filter((x) => x.province_code == provinceCode),
