@@ -11,8 +11,9 @@ let areas = [],
   wards = [];
 let tree = {};
 let treeWithArea = {};
+const sub =(value,length)=>String(value).padStart(length, '0')
 files.forEach(file_name => {
-  if (file_name.includes("vùng")) {
+  if (file_name.toLowerCase().includes('vùng')) {
     const areas_workbook = XLSX.readFile(
       path.resolve(EXCEL_PATH, file_name)
     ).Sheets[DEFAULT_SHEET];
@@ -28,7 +29,7 @@ files.forEach(file_name => {
       path.resolve(JSON_PATH, "areas.json"),
       JSON.stringify(areas, null, 2)
     );
-  } else if (file_name.includes("tỉnh")) {
+  } else if (file_name.toLowerCase().includes("tỉnh")) {
     const provinces_workbook = XLSX.readFile(
       path.resolve(EXCEL_PATH, file_name)
     ).Sheets[DEFAULT_SHEET];
@@ -47,7 +48,7 @@ files.forEach(file_name => {
       path.resolve(JSON_PATH, "provinces.json"),
       JSON.stringify(provinces, null, 2)
     );
-  } else if (file_name.includes("huyện")) {
+  } else if (file_name.toLowerCase().includes("huyện")) {
     const districts_workbook = XLSX.readFile(
       path.resolve(EXCEL_PATH, file_name)
     ).Sheets[DEFAULT_SHEET];
@@ -68,20 +69,20 @@ files.forEach(file_name => {
       path.resolve(JSON_PATH, "districts.json"),
       JSON.stringify(districts, null, 2)
     );
-  } else if (file_name.includes("xã")) {
+  } else if (file_name.toLowerCase().includes("xã")) {
     const wards_workbook = XLSX.readFile(path.resolve(EXCEL_PATH, file_name))
       .Sheets[DEFAULT_SHEET];
     wards = XLSX.utils
       .sheet_to_json(wards_workbook, { raw: true })
       .map(x => ({
-        code: x["Mã"],
+        code: sub(x["Mã"],5),
         name: x["Tên"],
         unit: x["Cấp"],
-        district_code: x["Mã QH"],
+        district_code: sub(x["Mã QH"],3),
         district_name: x["Quận Huyện"],
-        province_code: x["Mã TP"],
+        province_code: sub(x["Mã TP"],2),
         province_name: x["Tỉnh / Thành Phố"],
-        area_code: x["Mã vùng"],
+        area_code:sub( x["Mã vùng"],2),
         area_name: x["Vùng"],
         full_name: `${x["Tên"]}, ${x["Quận Huyện"]}, ${x["Tỉnh / Thành Phố"]}, ${x["Vùng"]}`
       }))
