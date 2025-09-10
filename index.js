@@ -1,6 +1,5 @@
 const areas = require("./json_data/areas.json");
 const provinces = require("./json_data/provinces.json");
-const districts = require("./json_data/districts.json");
 const wards = require("./json_data/wards.json");
 const tree = require("./json_data/tree.json");
 const treeWithArea = require("./json_data/treeWithArea.json");
