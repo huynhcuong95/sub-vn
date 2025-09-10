@@ -45,7 +45,6 @@ module.exports = {
   getWardsByCode: (wardCode) => wards.find((x) => x.code == wardCode),
   getCityByCode: (cityCode) => provinces.find((x) => x.code == cityCode),
   //update feature getCodeByName
-  getCodeByDistrict: (districtName, provinceName) => tempDistrict[(nameDistrict.find(aa => aa.includes(stringToSlug(provinceName))))].find(x => (stringToSlug(x.name)).includes(stringToSlug(districtName))),
   getCodeByWard: (ward, city) => temp[(nameProcvince.find(aa => aa.includes(stringToSlug(city))))].find(x => (stringToSlug(x.name)).includes(stringToSlug(ward))),
   getCodeProvince: (provinceName) => provinces.find((x) => stringToSlug(x.name).includes(stringToSlug(provinceName))),
 };
