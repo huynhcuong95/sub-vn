@@ -15,11 +15,8 @@ $ npm install sub-vn
 | Function  | Desciption |
 | ------------- | ------------- |
 | getProvinces() | Lấy danh sách tỉnh/thành phố |
-| getDistricts() | Lấy danh sách các huyện/quận |
 | getWards() | Lấy danh sách các xã/phường |
 | getProvincesWithDetail() | Lấy toàn bộ dữ liệu |
-| getDistrictsByProvinceCode(provinceCode) | Lấy danh sách huyện/ quận theo mã tỉnh |
-| getWardsByDistrictCode(districtCode) | Lấy danh sách phường/ xã theo mã huyện |
 | getWardsByProvinceCode(provinceCode) | Lấy danh sách phường/ xã theo tỉnh |
 
 
