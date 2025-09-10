@@ -34,34 +34,17 @@ arr.forEach((e) => {
   temp[convertName].push(e)
 })
 
-// convert district
-const arrDistrict = [...districts]
-const tempDistrict = {}
-let nameDistrict = []
-arrDistrict.forEach((e) => {
-  const convertName = stringToSlug(e.province_name)
-  if (!tempDistrict[convertName]) {
-    tempDistrict[convertName] = []
-    nameDistrict.push(convertName)
-  }
-  tempDistrict[convertName].push(e)
-})
-
 
 module.exports = {
   getAreas: () => areas,
   getProvinces: () => provinces,
-  getDistricts: () => districts,
   getWards: () => wards,
   getAreasWithDetail: () => treeWithArea,
   getProvincesWithDetail: () => tree,
-  getProvindByAreaCode: (areaCode) => provinces.filter((x) => x.areaCode == areaCode),
-  getDistrictsByProvinceCode: (provinceCode) => districts.filter((x) => x.province_code == provinceCode),
-  getWardsByDistrictCode: (districtCode) => wards.filter((x) => x.district_code == districtCode),
+  getProvindByAreaCode: (areaCode) => provinces.filter((x) => x.area_code == areaCode),
   getWardsByProvinceCode: (provinceCode) => wards.filter((x) => x.province_code == provinceCode),
   getWardsByCode: (wardCode) => wards.find((x) => x.code == wardCode),
   getCityByCode: (cityCode) => provinces.find((x) => x.code == cityCode),
-  getDistrictByCode: (districtCode) => districts.find((x) => x.code == districtCode),
   //update feature getCodeByName
   getCodeByDistrict: (districtName, provinceName) => tempDistrict[(nameDistrict.find(aa => aa.includes(stringToSlug(provinceName))))].find(x => (stringToSlug(x.name)).includes(stringToSlug(districtName))),
   getCodeByWard: (ward, city) => temp[(nameProcvince.find(aa => aa.includes(stringToSlug(city))))].find(x => (stringToSlug(x.name)).includes(stringToSlug(ward))),
